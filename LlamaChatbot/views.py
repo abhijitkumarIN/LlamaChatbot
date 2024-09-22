@@ -4,13 +4,12 @@ import json
 from django.shortcuts import render
 from groq import Groq
 
-client = Groq(api_key=("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"))
+client = Groq(api_key=("__"))
 
 
 class ChatQuery(View):
     def post(self, request):
         data = request.POST
-
         chat_completion = client.chat.completions.create(
             #
             # Required parameters
@@ -29,9 +28,7 @@ class ChatQuery(View):
             ],
             # The language model which will generate the completion.
             model="llama3-8b-8192",
-            #
             # Optional parameters
-            #
             # Controls randomness: lowering results in less random completions.
             # As the temperature approaches zero, the model will become deterministic
             # and repetitive.
